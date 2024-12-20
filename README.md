@@ -30,13 +30,13 @@ export PATH=/path/to/sdk/bin:$PATH
 scons -j16
 ```
 
-For other build-time options please see https://docs.godotengine.org/en/stable/contributing/development/compiling/compiling_for_linuxbsd.html
+For other build-time options please see [Compiling for Linux](https://docs.godotengine.org/en/stable/contributing/development/compiling/compiling_for_linuxbsd.html).
 
 # Obtaining an SDK
 
 ## Downloading a pre-built SDK
 
-Pre-built toolchains are available on https://download.tuxfamily.org/godotengine/toolchains/linux.
+Pre-built toolchains are available on [GitHub Releases](https://github.com/godotengine/buildroot/releases/) or [TuxFamily](https://downloads.tuxfamily.org/godotengine/toolchains/linux/).
 
 ## Using buildroot to generate SDKs
 
