@@ -26,7 +26,7 @@ Unpack the toolchain anywhere you like and run the `relocate-sdk.sh` script with
 After this you can build the engine more-or-less like normal. For instance:
 
 ```
-export PATH=/path/to/sdk/bin:$PATH 
+export PATH=/path/to/sdk/bin:$PATH
 scons -j16
 ```
 
@@ -36,7 +36,7 @@ For other build-time options please see [Compiling for Linux](https://docs.godot
 
 ## Downloading a pre-built SDK
 
-Pre-built toolchains are available on [GitHub Releases](https://github.com/godotengine/buildroot/releases/) or [TuxFamily](https://downloads.tuxfamily.org/godotengine/toolchains/linux/).
+Pre-built toolchains are available on [GitHub Releases](https://github.com/godotengine/buildroot/releases).
 
 ## Using buildroot to generate SDKs
 
