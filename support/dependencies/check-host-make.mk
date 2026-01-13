@@ -7,7 +7,7 @@
 # version, our package infra will catch it and whine.
 #
 
-# Godot hack, we must have make 4.3 to build older glibc
+# Tekisasu hack, we must have make 4.3 to build older glibc
 # So instead of checking for any particular make version we just
 # force the use of our host-built make instead
 
