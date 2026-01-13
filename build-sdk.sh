@@ -23,23 +23,23 @@ esac
 
 case $2 in
   i686)
-    cp config-godot-i686 .config
-    toolchain_prefix=i686-godot-linux-gnu
+    cp config-tekisasu-i686 .config
+    toolchain_prefix=i686-tekisasu-linux-gnu
     bits=32
   ;;
   x86_64)
-    cp config-godot-x86_64 .config
-    toolchain_prefix=x86_64-godot-linux-gnu
+    cp config-tekisasu-x86_64 .config
+    toolchain_prefix=x86_64-tekisasu-linux-gnu
     bits=64
   ;;
   armv7)
-    cp config-godot-armv7 .config
-    toolchain_prefix=arm-godot-linux-gnueabihf
+    cp config-tekisasu-armv7 .config
+    toolchain_prefix=arm-tekisasu-linux-gnueabihf
     bits=32
   ;;
   aarch64)
-    cp config-godot-aarch64 .config
-    toolchain_prefix=aarch64-godot-linux-gnu
+    cp config-tekisasu-aarch64 .config
+    toolchain_prefix=aarch64-tekisasu-linux-gnu
     bits=64
   ;;
   *)
@@ -58,19 +58,19 @@ else
 fi
 
 function build_linux_sdk() {
-  ${container} build -f Dockerfile.linux-builder -t godot-buildroot-builder-linux
-  ${container} run -it --rm -v $(pwd):/tmp/buildroot:z -w /tmp/buildroot -e FORCE_UNSAFE_CONFIGURE=1 --userns=keep-id godot-buildroot-builder-linux bash -c "make clean; make syncconfig; make sdk"
+  ${container} build -f Dockerfile.linux-builder -t tekisasu-buildroot-builder-linux
+  ${container} run -it --rm -v $(pwd):/tmp/buildroot:z -w /tmp/buildroot -e FORCE_UNSAFE_CONFIGURE=1 --userns=keep-id tekisasu-buildroot-builder-linux bash -c "make clean; make syncconfig; make sdk"
 
-  mkdir -p godot-toolchains
+  mkdir -p tekisasu-toolchains
 
-  rm -fr godot-toolchains/${toolchain_prefix}_sdk-buildroot
-  tar xf output/images/${toolchain_prefix}_sdk-buildroot.tar.gz -C godot-toolchains
+  rm -fr tekisasu-toolchains/${toolchain_prefix}_sdk-buildroot
+  tar xf output/images/${toolchain_prefix}_sdk-buildroot.tar.gz -C tekisasu-toolchains
 
-  pushd godot-toolchains/${toolchain_prefix}_sdk-buildroot
+  pushd tekisasu-toolchains/${toolchain_prefix}_sdk-buildroot
   ../../clean-linux-toolchain.sh ${toolchain_prefix} ${bits}
   popd
 
-  pushd godot-toolchains
+  pushd tekisasu-toolchains
   tar -cjf ${toolchain_prefix}_sdk-buildroot.tar.bz2 ${toolchain_prefix}_sdk-buildroot
   rm -rf ${toolchain_prefix}_sdk-buildroot
   popd
@@ -80,4 +80,4 @@ build_linux_sdk
 
 echo
 echo "***************************************"
-echo "Build succesful your toolchain is in the godot-toolchains directory"
+echo "Build succesful your toolchain is in the tekisasu-toolchains directory"
